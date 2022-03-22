@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:scannerapp/home.dart';
+import 'package:scannerapp/register_user.dart';
 
 late String _email, _password;
 
@@ -35,13 +36,6 @@ class _LoginScreenState extends State<LoginScreen> {
               gravity: ToastGravity.TOP,
               textColor: Colors.white));
     }
-  }
-
-  registerUser() async {
-    await authInstance.createUserWithEmailAndPassword(
-        email: _email, password: _password);
-
-    print('success');
   }
 
   @override
@@ -93,21 +87,21 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    ElevatedButton(
-                      onPressed: registerUser,
-                      child: const Text("Register"),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        loginUser();
-                      },
-                      child: const Text("Login"),
-                    ),
-                  ],
-                )
+                ElevatedButton(
+                  onPressed: () {
+                    loginUser();
+                  },
+                  child: const Text("Login"),
+                ),
+                TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Registeruser(),
+                          ));
+                    },
+                    child: const Text("Create Account "))
               ],
             ),
           ),
