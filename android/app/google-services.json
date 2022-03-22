@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "391859464356",
+    "project_id": "scannerapp-93ff9",
+    "storage_bucket": "scannerapp-93ff9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391859464356:android:71e7d511746a3db13ade31",
+        "android_client_info": {
+          "package_name": "com.vtm.scannerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391859464356-203if82h1sog96lqcp7e36lajsaq7sda.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUGnVS9b1F21eBC0TpJWYTyFyO0iOtkzw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391859464356-203if82h1sog96lqcp7e36lajsaq7sda.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
