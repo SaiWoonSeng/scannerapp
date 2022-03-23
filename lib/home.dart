@@ -3,13 +3,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
+import 'package:scannerapp/model/user_model.dart';
 import 'package:scannerapp/success_page.dart';
 
 // ignore: non_constant_identifier_names
 
 String? amount;
 
-var auth = FirebaseAuth.instance;
 TextEditingController cNoController = TextEditingController();
 
 TextEditingController cNameController = TextEditingController();
@@ -26,14 +26,27 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var auth = FirebaseAuth.instance.currentUser;
+  UserModel userModel = UserModel();
   final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("User")
+        .doc(auth!.uid)
+        .get()
+        .then((value) => userModel = UserModel.fromMap(value.data()));
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white70,
       appBar: AppBar(
-        title: Text("Scanner App"),
+        title: const Text("Scanner App"),
       ),
       body: cNameController.text.isNotEmpty
           ? AlertDialog(
@@ -120,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         cNameController.value.text,
                         cphNoController.value.text,
                         amount!,
-                        auth.currentUser!.uid,
+                        userModel.userNo.toString(),
                         DateTime.now());
                     Navigator.pushReplacement(
                         context,

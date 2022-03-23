@@ -98,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Registeruser(),
+                            builder: (context) => const Registeruser(),
                           ));
                     },
                     child: const Text("Create Account "))
